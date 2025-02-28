@@ -1,0 +1,52 @@
+# kubectl create -f rs-definition.yaml
+# kubectl replace -f rs-definition.yaml
+# kubectl get replicaset
+# kubectl delete replicaset myapp-replicaset
+# kubectl edit rs new-replica-set
+
+# v1 - POD/Service 
+# apps/v1 - ReplicaSet/Deployment
+apiVersion: apps/v1
+   
+# Pod/Service/ReplicaSet/Deployment
+kind: ReplicaSet 
+
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports: 
+          - containerPort: 8080
+        env:
+          - name: APP_PASSWORD
+            value: 1234
+        envFrom:
+          - configMapRef: 
+            name: config-map
+        command: ["Overites Entrypoint In Docker File"]
+        args: ["Overites CMD In Docker File"]
+        
+      readinessProbe:
+        httpGet:
+          path: /api/ready
+          port: 8080
+
+replicas: 3
+selector:
+  matchLabels:
+    type: front-end

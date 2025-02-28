@@ -1,0 +1,10 @@
+Select * From Main.Tenants
+
+SELECT 
+    COLUMN_NAME AS ColumnName,
+    DATA_TYPE AS DataType,
+    CHARACTER_MAXIMUM_LENGTH AS MaxLength,
+    IS_NULLABLE AS IsNullable
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'Tenants' AND TABLE_SCHEMA = 'Main';
+

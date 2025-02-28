@@ -1,0 +1,110 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Web Server:
+    - Cloudflare:
+        icon: cloudflare.svg
+        href: "https://www.cloudflare.com/"
+        description: cloudflare.com
+    - Traefik:
+        icon: traefik.svg
+        href: https://traefik.webport.co.za/
+        description: traefik.webport.co.za
+
+- .NET Projects:
+    - API:
+        icon: https://static-00.iconduck.com/assets.00/swagger-icon-1024x1024-09037v1r.png
+        href: https://starter.webport.co.za/scalar/v1
+        description: starter.webport.co.za
+    - Blazor:
+        icon: /icons/blazor.png
+        href: https://blazor.webport.co.za/
+        description: blazor.webport.co.za
+
+
+- Source Control:
+    - Git:
+        icon: git.webp # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://git-scm.com/
+        description: git-scm.com
+    - Github:
+        icon: github.webp # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://github.com/
+        description: github.com
+
+- Databases:
+    - SQL Server:
+        icon: https://img.icons8.com/?size=512&id=laYYF3dV0Iew&format=png
+        href: "/"
+        description: |
+            102.1251542:443
+            sa
+            25122000SK
+    - Postgres:
+        icon: postgres.webp
+        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+        description: pve2
+    - Redis:
+        icon: redis.webp
+        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+        description: pve2
+
+- Observability:
+    - Glances:
+        icon: glances.svg
+        href: https://glances.webport.co.za/
+        description: glances.webport.co.za
+    - Uptime Kuma:
+        icon: uptime-kuma.svg
+        href: https://kuma.webport.co.za/dashboard
+        description: kuma.webport.co.za
+    - Seq:
+        icon: https://datalust.co/images/seq-nuget.png
+        href: https://seq.webport.co.za/
+        description: seq.webport.co.za
+    - Jaeger:
+        icon: jaeger.svg
+        href: https://jaeger.webport.co.za/
+        description: jaeger.webport.co.za
+    - RabbitMQ:
+        icon: rabbitmq.svg
+        href: https://rabbitmq.webport.co.za/
+        description: rabbitmq.webport.co.za
+
+- Containers:
+    - Docker:
+        icon: docker.svg
+        href: "https://www.docker.com/"
+        description: docker.com
+    - Portainer:
+        icon: portainer.svg
+        href: https://portainer.webport.co.za/
+        description: portainer.webport.co.za
+    - Kubernetes:
+        icon: kubernetes.svg
+        href: "https://kubernetes.io/"
+        description: kubernetes.io
+    - ArgoCD:
+        icon: https://miro.medium.com/v2/resize:fit:1400/1*d_nWfpG-EF831-yXwx64HQ.png
+        href: "https://argocd.webport.co.za/"
+        description: argocd.webport.co.za
+
+- Other Tools:
+    - Grafana:
+        icon: grafana.svg
+        href: "https://grafana.com/"
+        description: Documentation
+    - Ansible:
+        icon: ansible.svg
+        href: "https://docs.ansible.com/"
+        description: Documentation
+    - Terraform:
+        icon: terraform.svg
+        href: "https://www.terraform.io/"
+        description: Documentation
+    - Proxmox:
+        icon: proxmox.svg
+        href: "https://www.proxmox.com/en/"
+        description: Documentation
+

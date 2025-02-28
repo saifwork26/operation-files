@@ -1,0 +1,125 @@
+# Kubernetes
+# Helm
+# Cert Manager
+# Ingress Controller
+# Services & PODs
+
+#     server: https://acme-v02.api.letsencrypt.org/directory
+-------------------------------------
+
+source <(kubectl completion bash) # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
+echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+
+alias k=kubectl
+complete -o default -F __start_kubectl k
+
+-------------------------------------
+
+# Viewing and finding resources
+kubeadm version
+kubectl get all --all-namespaces
+
+# Nodes
+kubectl get node -o wide  
+kubectl describe node worker-1
+kubectl drain milan7763-15195 --ignore-daemonsets --delete-emptydir-data
+kubectl delete node milan7763-15195
+
+# Namespaces
+kubectl get namespaces
+
+# Services
+kubectl get services --all-namespaces # Get All Services
+kubectl get svc -n kube-system
+kubectl delete service test-service -n <namespace>
+
+# Pods
+kubectl get pods -o wide --all-namespaces     # List all pods in the current namespace, with more details
+kubectl get pods                              # List all pods in the namespace
+kubectl get pod my-pod -o yaml                # Get a pod's YAML
+kubectl delete pod <pod-name> -n <namespace>
+kubectl describe pod weave-net-b9bkc -n kube-system
+kubectl logs nginx-deployment-55cf5d9d8f-94xsx -n name_space
+
+
+# Deployments
+kubectl get deployments --all-namespaces
+kubectl get deployment service-a                 # List a particular deployment
+kubectl describe deployment nginx-deployment -n default
+kubectl delete deployment nginx-deployment -n default
+kubectl describe deployment ingress-nginx-controller -n ingress-nginx
+
+
+
+# Replica Sets
+kubectl get replicaset --all-namespaces
+
+# Secrets
+kubectl get secrets --all-namespaces
+kubectl describe secret letsencrypt-cluster-issuer-key -n cert-manager
+kubectl get secret cloudflare-api-token-secret -n cert-manager -o yaml
+kubectl delete secret cloudflare-api-token-secret -n cert-manager
+
+# Issuers
+kubectl get issuers --all-namespaces
+kubectl get clusterissuers
+kubectl delete clusterissuer letsencrypt-cloudflare-issuer
+kubectl describe clusterissuer letsencrypt-prod
+
+# Certificate
+kubectl get certificate -o wide
+kubectl delete certificate secure-webport-tls -n default
+kubectl describe certificate secure-webport -n default
+
+
+# Get Config Files
+kubectl get cm -n kube-system
+kubectl describe cm -n kube-system
+
+# Ingress
+kubectl get ingress --all-namespaces # Get All Nginx Ingress Resources
+kubectl get all -n ingress-nginx
+kubectl rollout restart deployment -n ingress-nginx ingress-nginx-controller
+
+kubectl edit service ingress-nginx-controller -n ingress-nginx # View/Modify Nginx Ingress Controller
+kubectl logs ingress-nginx-controller-69fd8c5d8-v82kj -n ingress-nginx # Get Nginx Ingress Logs 
+
+
+# Apply
+kubectl apply -f minimal-service-config.yaml
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Remove A Node
+kubectl drain milan7763-15195 --ignore-daemonsets --delete-local-data
+kubectl delete node milan7763-15195
+
+# Check what port a service is listening to
+netstat -npl | grep -i scheduler
+
+# Status Check
+sudo systemctl status containerd
+sudo systemctl status kubelet.service
+
+# Pod Networking
+
+# To add bridge network on each node
+ip link add v-net-0 type bridge
+
+# Set the IP Address for the bridge interface For Each Node
+ip addr add 10.244.1.1/24 dev v-net-0 #Node 1
+ip addr add 10.244.2.1/24 dev v-net-0 #Node 2
+ip addr add 10.244.3.1/24 dev v-net-0 #Node 3
+
+# Check container runtime endpoint value
+ps -aux | grep -i kubelet
+ps -aux | grep -i kubelet | grep container-runtime
+
+# Check cgroup drivers
+ps -p 1
+
+# Check current/default Containerd config 
+containerd config default
+
+# Check Changes
+cat /etc/containerd/config.toml | grep -i SystemdCgroup -B 50

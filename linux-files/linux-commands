@@ -1,0 +1,76 @@
+# Change the Hostname
+sudo hostnamectl set-hostname master-1
+sudo hostnamectl set-hostname worker-1
+hostnamectl
+sudo reboot
+
+# Network Interface For CLuster Connectivity On Controlplane Node
+ip address
+ip link
+
+---------------------------------------------------------------------------
+
+# New Linux Machine
+
+sudo apt-get upgrade ubuntu-release-upgrader-core
+
+Change Password
+passwd
+
+------------------------------------------------------------------
+
+Restart Server
+sudo reboot
+
+------------------------------------------------------------------
+
+Create User
+adduser saif
+
+------------------------------------------------------------------
+
+Add Sudo Permission To User
+usermod -aG sudo saif
+
+------------------------------------------------------------------
+
+Switch To User
+su - saif
+
+------------------------------------------------------------------
+
+Point Domain To VPS Server
+
+------------------------------------------------------------------
+
+sudo apt install tmux
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+Assign User To Docker Group
+sudo usermod -aG docker saif
+
+Update System
+
+sudo dpkg --configure -a
+sudo apt update && sudo apt upgrade -y
+
+------------------------------------------------------------------
+
+Domain Lookup
+
+nslookup cashalot.co.za
+
+------------------------------------------------------------------
+
+Install git 
+
+apt install git
+
+------------------------------------------------------------------
+
+
+
+
+

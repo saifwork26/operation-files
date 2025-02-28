@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-demo-1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx-demo-1-https.entrypoints=https"
+      - "traefik.http.routers.nginx-demo-1-https.rule=Host(`nginx1.webport.co.za`)"
+      - "traefik.http.routers.nginx-demo-1-https.tls=true"
+      - "traefik.http.routers.nginx-demo-1-https.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true

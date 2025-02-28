@@ -1,0 +1,22 @@
+[linux]
+
+102.211.206.231
+
+[linux:vars]
+
+ansible_user=root
+ansible_password=25122000@Saif
+
+---------------------------------------------------------------------------
+
+ansible-config init --disabled > ansible.cfg
+sudo ansible-config init --disabled | sudo tee ansible.cfg > /dev/null
+
+hostkey=false in 
+interpreter_python=auto_silent  
+
+---------------------------------------------------------------------------
+
+ansible all -m ping
+ansible linux -a "cat /etc/os-release"
+ansible linux -a "reboot"

@@ -1,0 +1,103 @@
+services:
+
+  mssql.database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: Starter.SQLServer
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=25122000SK
+      - MSSQL_PID=Express  
+      - MSSQL_DATABASE=TestDB
+      - MSSQL_MEMORY_LIMIT_MB=512 
+    volumes:
+      - sqlserver_data:/var/opt/mssql 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.mssql.loadbalancer.server.port=1433"
+      - "traefik.http.routers.mssql.rule=Host(`mssql.webport.co.za`)"
+      - "traefik.http.routers.mssql.entrypoints=https"
+      - "traefik.http.routers.mssql.tls=true"
+      - "traefik.http.routers.mssql.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+      
+  postgresql.database:
+    image: postgres:17
+    container_name: Starter.PostgreSQL
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=test-db
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=25122000SK
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.postgresql.loadbalancer.server.port=5432"
+      - "traefik.http.routers.postgresql.entrypoints=https"
+      - "traefik.http.routers.postgresql.rule=Host(`postgresql.webport.co.za`)"
+      - "traefik.http.routers.postgresql.tls=true"
+      - "traefik.http.routers.postgresql.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+       
+  redis.database:
+    image: redis:latest
+    container_name: Starter.Redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.redis.loadbalancer.server.port=6379"
+      - "traefik.http.routers.redis.entrypoints=https"
+      - "traefik.http.routers.redis.rule=Host(`redis.webport.co.za`)"
+      - "traefik.http.routers.redis.tls=true"
+      - "traefik.http.routers.redis.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+
+  rabbit.mq:
+    image: rabbitmq:4.1-rc-management-alpine
+    container_name: Starter.RabbitMQ
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: sa
+      RABBITMQ_DEFAULT_PASS: 25122000SK
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_log:/var/log/rabbitmq
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.rabbitmq.loadbalancer.server.port=15672"
+      - "traefik.http.routers.rabbitmq.entrypoints=https"
+      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.webport.co.za`)"
+      - "traefik.http.routers.rabbitmq.tls=true"
+      - "traefik.http.routers.rabbitmq.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+
+volumes:
+  sqlserver_data:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:
+  rabbitmq_log:
+
+networks:
+  proxy:
+    external: true

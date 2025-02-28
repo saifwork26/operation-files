@@ -1,0 +1,44 @@
+services:
+
+  mariadb:
+    image: mariadb:10.6.4-focal
+    container_name: mariadb_container
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=25122000SK
+      - MYSQL_DATABASE=test-db
+      - MYSQL_USER=Saif
+      - MYSQL_PASSWORD=25122000SK
+    ports:
+      - "3306:3306"
+    networks:
+      - proxy
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_container
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: 786MH786
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phpmyadmin-https.entrypoints=https"
+      - "traefik.http.routers.phpmyadmin-https.rule=Host(`phpmyadmin.cashalot.co.za`)"
+      - "traefik.http.routers.phpmyadmin-https.tls=true"
+      - "traefik.http.routers.phpmyadmin-https.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+    networks:
+      - proxy
+
+volumes:
+  mariadb_data:
+
+networks:
+  proxy:
+    external: true

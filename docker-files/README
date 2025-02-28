@@ -1,0 +1,71 @@
+List all images.
+docker images
+
+Remove Image.
+docker rmi <image_name_or_id>
+
+Remove all unused Images.
+docker image prune
+
+Remove all unused Images, Containers, Volumes, and Networks.
+docker system prune -a --volumes
+
+Build docker image.
+docker image build -t image-name .
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+List all containers.
+docker ps -a
+
+List all running containers.
+docker ps 
+
+Start container.
+docker start <container_name_or_id>
+
+Stop, remove and delete volume of the container.
+docker rm -v -f <container_name_or_id>
+
+Run Container
+docker run --name container-name -p 32780:80 -d image-name
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Portainer Installation
+
+docker run -d -p 9000:9000 -p 8000:8000 -p 9443:9443 \
+   --name portainer \
+   --restart=always \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   -v portainer_data:/data portainer/portainer-ce:latest
+
+   docker-compose -f docker-compose.blazor.yml  up -d
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Docker Hub
+
+docker tag test/my-web-api2 saifdev22/my-web-api:v1
+docker push saifdev22/my-web-api:v1
+
+Login to docker hub
+docker login
+
+Username
+saifdev22@gmail.com
+
+Password
+0926182904@Sk
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+docker build -t blazor-qwe .
+
+docker run --name client-blazor -d -p 5006:8080 clientapi
+
+
+
+
+

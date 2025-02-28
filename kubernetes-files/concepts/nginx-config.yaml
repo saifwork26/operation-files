@@ -1,0 +1,17 @@
+# v1 - POD/Service 
+# apps/v1 - ReplicaSet/Deployment
+apiVersion: v1 
+   
+# Pod/Service/ReplicaSet/Deployment
+kind: Pod 
+
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx

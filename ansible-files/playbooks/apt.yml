@@ -1,0 +1,17 @@
+---
+- name: Update and Upgrade Ubuntu Machines
+  hosts: all
+  become: true
+  tasks:
+    - name: Update the package cache (equivalent to "apt-get update")
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Upgrade all packages (equivalent to "apt-get upgrade")
+      ansible.builtin.apt:
+        upgrade: dist
+
+    - name: Autoremove unnecessary packages (equivalent to "apt-get autoremove")
+      ansible.builtin.apt:
+        autoremove: yes
+        autoclean: yes

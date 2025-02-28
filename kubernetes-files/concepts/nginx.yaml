@@ -1,0 +1,51 @@
+# Specifies the API version for the resource
+apiVersion: apps/v1
+# Defines the resource type as a Deployment
+kind: Deployment
+metadata:
+  # Name of the Deployment
+  name: nginx-deployment
+spec:
+  # Defines how to identify the pods managed by this Deployment
+  selector:
+    matchLabels:
+      # Pods with this label will be managed by the Deployment
+      app: nginx
+  # Specifies the number of pod replicas to run
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        # Adds a label to the pod for selection and organization
+        app: nginx
+    spec:
+      containers:
+      - name: nginx # Name of the container
+        image: nginx:latest # Specifies the container image to use
+        resources:
+          limits:
+            cpu: "0.5" # Maximum CPU the container can use (0.5 cores)
+            memory: "256Mi" # Maximum memory the container can use
+          requests:
+            cpu: "0.25" # Minimum CPU guaranteed to the container (0.25 cores)
+            memory: "128Mi" # Minimum memory guaranteed to the container
+        ports:
+        - containerPort: 80 # Exposes port 80 inside the container
+---
+# Specifies the API version for the resource
+apiVersion: v1
+# Defines the resource type as a Service
+kind: Service
+metadata:
+  # Name of the Service
+  name: nginx-service
+spec:
+  # Selector to match pods with the label `app: nginx`
+  selector:
+    app: nginx
+  # Specifies the Service type as NodePort
+  type: NodePort
+  ports:
+    - port: 80 # Exposes the Service on port 80
+      targetPort: 80 # Forwards traffic to port 80 on the container
+      nodePort: 32000 # Exposes the Service on port 32000 on the node

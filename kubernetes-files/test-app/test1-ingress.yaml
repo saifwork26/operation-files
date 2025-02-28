@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test1-app-ingress #Change
+  namespace: default
+  annotations:
+    ingress.kubernetes.io/proxy-body-size: "0"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: cluster-issuer-prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/private-key-rotation-policy: always  
+  generation: 1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: house.webport.co.za #Change
+    http:
+      paths:
+      - backend:
+          service:
+            name: test1-service #Change
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - house.webport.co.za #Change
+    secretName: webport-certificate-tls    
+                

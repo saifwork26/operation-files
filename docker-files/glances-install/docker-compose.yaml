@@ -1,0 +1,27 @@
+services:
+
+  glances:
+    image: nicolargo/glances:latest
+    restart: always
+    container_name: glances
+    pid: host
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/os-release:/etc/os-release:ro
+    environment:
+      - "GLANCES_OPT=-w"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=61208"
+      - "traefik.http.routers.glances-https.entrypoints=https"
+      - "traefik.http.routers.glances-https.rule=Host(`glances.webport.co.za`)"
+      - "traefik.http.routers.glances-https.tls=true"
+      - "traefik.http.routers.glances-https.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

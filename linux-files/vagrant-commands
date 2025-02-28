@@ -1,0 +1,6 @@
+vagrant status
+vagrant up
+vagrant ssh node-name
+ls -la
+ip add
+logout

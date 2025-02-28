@@ -1,0 +1,20 @@
+# Github PAT - GH_PAT
+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
+
+# Authenticate Github On Server
+docker login ghcr.io -u saifdev22 -p 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
+
+ssh key
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACBsmxZZ0h3TiXON0oSB/vFY6fzLrlb2e12W+puef94Q8gAAAJgiRAItIkQC
+LQAAAAtzc2gtZWQyNTUxOQAAACBsmxZZ0h3TiXON0oSB/vFY6fzLrlb2e12W+puef94Q8g
+AAAEAxOyNiSwDHvygwonc5mKiOLQHjyCbzK+JyCVANCHxT/mybFlnSHdOJc43ShIH+8Vjp
+/MuuVvZ7XZb6m55/3hDyAAAADmdpdGh1Yi1hY3Rpb25zAQIDBAUGBw==
+-----END OPENSSH PRIVATE KEY-----
+
+
+docker tag starter-api $IMAGE_NAME:$TAG
+docker tag starter-api $IMAGE_NAME:latest
+docker push $IMAGE_NAME:$TAG
+docker push $IMAGE_NAME:latest

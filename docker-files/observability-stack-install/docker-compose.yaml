@@ -1,0 +1,46 @@
+services:
+
+  seq.logging:
+    image: datalust/seq:latest
+    container_name: Starter.Seq
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341  # Seq ingestion API
+      - 8081:80    # Seq web UI
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.seq.loadbalancer.server.port=80"
+      - "traefik.http.routers.seq.rule=Host(`seq.webport.co.za`)"
+      - "traefik.http.routers.seq.entrypoints=https"
+      - "traefik.http.routers.seq.tls=true"
+      - "traefik.http.routers.seq.tls.certresolver=cloudflare"
+    networks:
+      - proxy
+
+  jaeger.tracing:
+    image: jaegertracing/all-in-one:latest
+    container_name: Starter.Jaeger
+    restart: always
+    ports:
+      - 16686:16686 # Jaeger web UI
+      - 4317:4317   # OTLP gRPC
+      - 4318:4318   # OTLP HTTP
+      - 6831:6831/udp # UDP Agent
+      - 5778:5778  # Sampling endpoint
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.jaeger.loadbalancer.server.port=16686"
+      - "traefik.http.routers.jaeger.rule=Host(`jaeger.webport.co.za`)"
+      - "traefik.http.routers.jaeger.entrypoints=https"
+      - "traefik.http.routers.jaeger.tls=true"
+      - "traefik.http.routers.jaeger.tls.certresolver=cloudflare"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

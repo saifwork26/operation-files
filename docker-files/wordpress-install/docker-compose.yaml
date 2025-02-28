@@ -1,0 +1,32 @@
+services:
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wp-cashalot
+    volumes:
+      - wp_cashalot:/var/www/html
+    restart: always
+    env_file: .env
+    environment:
+      - WORDPRESS_DB_HOST=102.211.206.231:3306
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wp-cashalot-https.entrypoints=https"
+      - "traefik.http.routers.wp-cashalot-https.rule=Host(`cashalot.co.za`)"
+      - "traefik.http.routers.wp-cashalot-https.tls=true"
+      - "traefik.http.routers.wp-cashalot-https.tls.certresolver=cloudflare"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.services.wp-cashalot.loadbalancer.server.port=80"
+    networks:
+      - proxy
+
+volumes:
+  wp_cashalot:
+
+networks:
+  proxy:
+    external: true

@@ -1,0 +1,16 @@
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# Copy secret from default to argocd namespace
+kubectl get secret webport-certificate-tls -n default -o yaml | \
+  sed 's/namespace: default/namespace: argocd/' | \
+  kubectl apply -f -
+
+# argocd password
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+
+admin
+Z-PoAjVrwMjDyQcV
+
+--------------------------------------
+helm repo add argo htt[s:/

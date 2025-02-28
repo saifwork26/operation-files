@@ -1,0 +1,36 @@
+# kubectl get deployments
+# kubectl delete replicaset myapp-replicaset
+# kubectl edit rs new-replica-set
+
+# v1 - POD/Service 
+# apps/v1 - ReplicaSet/Deployment
+apiVersion: apps/v1
+   
+# Pod/Service/ReplicaSet/Deployment
+kind: Deployment 
+
+metadata:
+  name: myapp-replicaset
+  namespace: default
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+
+replicas: 3
+selector:
+  matchLabels:
+    type: front-end

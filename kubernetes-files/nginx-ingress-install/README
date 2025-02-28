@@ -1,0 +1,23 @@
+CHART_VERSION="4.4.0"
+APP_VERSION="1.5.1"
+
+mkdir ./nginx-ingress-install
+
+helm template ingress-nginx ingress-nginx \
+--repo https://kubernetes.github.io/ingress-nginx \
+--version 4.4.0 \
+--namespace ingress-nginx \
+> nginx-ingress.1.5.1.yaml
+
+kubectl create namespace ingress-nginx
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm search repo ingress-nginx --versions
+
+kubectl apply -f nginx-ingress.1.5.1.yaml
+
+kubectl -n ingress-nginx get pods
+
+# Edit Nginx Controller   
+#externalIPs:
+#  - 102.214.11.80

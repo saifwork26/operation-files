@@ -1,0 +1,12 @@
+# kubectl create -f config-map.yaml
+# kubectl get configmaps
+# kubectl describe configmaps
+
+apiVersion: v1 
+kind: ConfigMap 
+
+metadata:
+  name: my-config
+
+data:
+  APP_PASSWORD: 1234
