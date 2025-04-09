@@ -7,10 +7,10 @@ services:
       - mariadb_data:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=25122000SK
+      - MYSQL_ROOT_PASSWORD=25122000
       - MYSQL_DATABASE=test-db
       - MYSQL_USER=Saif
-      - MYSQL_PASSWORD=25122000SK
+      - MYSQL_PASSWORD=25122000
     ports:
       - "3306:3306"
     networks:
@@ -24,7 +24,7 @@ services:
       - mariadb
     environment:
       PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: 786MH786
+      MYSQL_ROOT_PASSWORD: 25122000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.phpmyadmin-https.entrypoints=https"
