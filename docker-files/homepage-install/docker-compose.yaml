@@ -1,15 +1,17 @@
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
-    container_name: Starter.Homepage
+    image: ghcr.io/gethomepage/homepage:v1.1.1
+    container_name: homepage-container
     ports:
       - 3000:3000
-    env_file: .env
     volumes:
       - ./config:/app/config
       - ./images:/app/public/images
       - ./icons:/app/public/icons
-      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: dashboard.webport.co.za
+      #PUID: 1026 # optional, your user id
+      #PGID: 100 # optional, your group id
     restart: unless-stopped
     labels:
       - "traefik.enable=true"

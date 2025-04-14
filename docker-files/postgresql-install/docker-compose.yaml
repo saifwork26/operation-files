@@ -1,0 +1,30 @@
+services:
+  
+  postgresql.database:
+    image: postgres:17
+    container_name: Starter.PostgreSQL
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=test-db
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=25122000SK
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.postgresql.rule=HostSNI(`postgresql.webport.co.za`)"
+      - "traefik.tcp.routers.postgresql.entrypoints=https"
+      - "traefik.tcp.routers.postgresql.tls=true"
+      - "traefik.tcp.routers.postgresql.tls.certresolver=cloudflare"
+      - "traefik.tcp.services.postgresql.loadbalancer.server.port=5432"
+    networks:
+      - proxy
+
+volumes:
+  postgres_data:
+
+networks:
+  proxy:
+    external: true

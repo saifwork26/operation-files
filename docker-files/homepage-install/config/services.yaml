@@ -1,0 +1,197 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Web Server:
+    - Cloudflare:
+        icon: cloudflare.svg
+        href: "https://www.cloudflare.com/"
+        description: cloudflare.com
+    - Traefik:
+        icon: traefik.svg
+        href: https://traefik.webport.co.za/
+        description: traefik.webport.co.za
+
+- API Projects:
+    - Gateway.API:
+        icon: https://static-00.iconduck.com/assets.00/swagger-icon-1024x1024-09037v1r.png
+        href: https://gateway.webport.co.za/scalar/v1
+        description: gateway.webport.co.za
+    - Parent.API:
+        icon: https://static-00.iconduck.com/assets.00/swagger-icon-1024x1024-09037v1r.png
+        href: https://parent.webport.co.za/scalar/v1
+        description: parent.webport.co.za
+    - Child1.API:
+        icon: https://static-00.iconduck.com/assets.00/swagger-icon-1024x1024-09037v1r.png
+        href: https://child1.webport.co.za/scalar/v1
+        description: child1.webport.co.za
+
+- Client Projects:
+    - Blazor Web Assembly:
+        icon: /icons/blazor.png
+        href: https://blazor.webport.co.za/
+        description: blazor.webport.co.za
+    - Blazor Server:
+        icon: /icons/blazor.png
+        href: https://blazorserver.webport.co.za/
+        description: blazor.webport.co.za
+    - Blazor Pwa:
+        icon: /icons/blazor.png
+        href: https://blazorpwa.webport.co.za/
+        description: blazor.webport.co.za
+
+
+- Databases:
+    - Microsoft SQL Server:
+        icon: https://img.icons8.com/?size=512&id=laYYF3dV0Iew&format=png
+        href: "https://www.microsoft.com/en-us/sql-server"
+        description: microsoft.com/sql-server
+    - PostgreSQL:
+        icon: postgres.webp
+        href: "https://www.postgresql.org/"
+        description: postgresql.org
+    - MySQL:
+        icon: mysql.svg
+        href: "https://www.mysql.com/"
+        description: mysql.com
+    - Redis:
+        icon: redis.webp
+        href: "https://redis.io/"
+        description: redis.io
+
+- Source Control:
+    - Git:
+        icon: git.webp # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://git-scm.com/
+        description: git-scm.com
+    - Github:
+        icon: github.webp # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://github.com/
+        description: github.com
+
+- Observability:
+    - Glances:
+        icon: glances.svg
+        href: https://glances.webport.co.za/
+        description: glances.webport.co.za
+    - Uptime Kuma:
+        icon: uptime-kuma.svg
+        href: https://kuma.webport.co.za/dashboard
+        description: kuma.webport.co.za
+    - Seq:
+        icon: https://datalust.co/images/seq-nuget.png
+        href: https://seq.webport.co.za/
+        description: seq.webport.co.za
+    - Jaeger:
+        icon: jaeger.svg
+        href: https://jaeger.webport.co.za/
+        description: jaeger.webport.co.za
+    - RabbitMQ:
+        icon: rabbitmq.svg
+        href: https://rabbitmq.webport.co.za/
+        description: rabbitmq.webport.co.za
+
+- Containers:
+    - Docker:
+        icon: docker.svg
+        href: "https://www.docker.com/"
+        description: docker.com
+    - Kubernetes:
+        icon: kubernetes.svg
+        href: "https://kubernetes.io/"
+        description: kubernetes.io
+    - Portainer:
+        icon: portainer.svg
+        href: https://portainer.webport.co.za/
+        description: portainer.webport.co.za
+
+- CI/CD Pipeline:
+    - Github Actions:
+        icon: https://images.seeklogo.com/logo-png/42/2/github-actions-logo-png_seeklogo-428028.png
+        href: "https://github.com/features/actions"
+        description: github.com/features/actions
+    - Trivy:
+        icon: https://artifacthub.io/image/23e5c086-737a-4d46-b96a-da28674322a6@3x
+        href: https://trivy.dev/latest/
+        description: trivy.dev
+    - SonarQube:
+        icon: sonarqube.svg
+        href: "https://www.sonarsource.com/"
+        description: sonarsource.com
+    - ArgoCD:
+        icon: argo-cd.svg
+        href: "https://argoproj.github.io/cd/"
+        description: argoproj.github.io
+
+- Design Tools:
+    - Wordpress:
+        icon: wordpress.svg
+        href: "https://wordpress.com/"
+    - Adobe Photoshop:
+        icon: https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg
+        href: "https://www.adobe.com/za/products/photoshop.html"
+    - Adobe illustrator:
+        icon: https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator-40.svg
+        href: "https://www.adobe.com/za/products/illustrator.html"
+    - Adobe InDesign:
+        icon: https://www.adobe.com/cc-shared/assets/img/product-icons/svg/indesign-40.svg
+        href: "https://www.adobe.com/za/products/indesign.html"
+    - Adobe Dreamweaver:
+        icon: https://www.adobe.com/cc-shared/assets/img/product-icons/svg/dreamweaver-64.svg
+        href: "https://www.adobe.com/za/products/dreamweaver.html"
+    - Adobe XD:
+        icon: https://helpx.adobe.com/content/dam/help/mnemonics/xd_app_RGB_2017.svg
+        href: "https://adobexdplatform.com/"
+
+- Infrastructure Tools:
+    - Ansible:
+        icon: ansible.svg
+        href: "https://docs.ansible.com/"
+        description: ansible.com
+    - Terraform:
+        icon: terraform.svg
+        href: "https://www.terraform.io/"
+        description: terraform.io
+    - Proxmox:
+        icon: proxmox.svg
+        href: "https://www.proxmox.com/en/"
+        description: proxmox.com
+    - Truenas:
+        icon: truenas.svg
+        href: "https://www.truenas.com/"
+        description: truenas.com
+    - Wireguard:
+        icon: wireguard.svg
+        href: "https://www.wireguard.com/"
+        description: wireguard.com
+    - Pi-Hole:
+        icon: pi-hole.svg
+        href: "https://pi-hole.net/"
+        description: pi-hole.net
+
+- Other Tools:
+    - Prometheus:
+        icon: prometheus.svg
+        href: "https://prometheus.io/"
+        description: prometheus.io
+    - Grafana:
+        icon: grafana.svg
+        href: "https://grafana.com/"
+        description: grafana.com
+    - Authentik:
+        icon: https://avatars.githubusercontent.com/u/82976448?v=4
+        href: "https://goauthentik.io/"
+        description: goauthentik.io
+    - Home Assistant:
+        icon: home-assistant.svg
+        href: "https://www.home-assistant.io/"
+        description: home-assistant.io
+    - Jellyfin:
+        icon: jellyfin.svg
+        href: "https://jellyfin.org/"
+        description: jellyfin.org
+
+
+
+
+

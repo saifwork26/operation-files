@@ -1,0 +1,56 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- API Resources:
+    - Nuget Packages:
+        - icon: github.svg
+          href: https://github.com/mjebrahimi/Awesome-Nuget-Packages
+    - Software Architecture:
+        - icon: github.svg
+          href: https://github.com/mehdihadeli/awesome-software-architecture
+
+- Blazor Resources:
+    - Awesome Blazor:
+        - icon: github.svg
+          href: https://github.com/AdrienTorris/awesome-blazor
+    - Mudblazor:
+        - icon: https://mudblazor.com/_content/MudBlazor.Docs/images/logo.png
+          href: https://mudblazor.com/
+    - Syncfusion:
+        - icon: https://images.seeklogo.com/logo-png/60/2/syncfusion-logo-png_seeklogo-603828.png
+          href: https://syncfusion.com/
+
+- Windows Resources:
+  - Microsoft Activation Scripts:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://github.com/massgravel/Microsoft-Activation-Scripts
+  - Windows Update Disabler:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://github.com/tsgrgo/windows-update-disabler
+  - Windows 11 Debloat:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://github.com/Raphire/Win11Debloat
+  - PowerToys:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://github.com/microsoft/PowerToys/
+  - DevToys:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://devtoys.app/
+  - ShareX:
+    - icon: https://img.icons8.com/color/200/windows-11.png
+      href: https://getsharex.com/
+
+- Linux Resources:
+    - Awesome Linux:
+        - icon: https://cdn-icons-png.flaticon.com/512/6124/6124995.png
+          href: https://github.com/luong-komorebi/Awesome-Linux-Software
+    - Terminal Tools:
+        - icon: https://cdn-icons-png.flaticon.com/512/6124/6124995.png
+          href: https://github.com/k4m4/terminals-are-sexy?tab=readme-ov-file#windows
+    - CLI Tools:
+        - icon: https://cdn-icons-png.flaticon.com/512/6124/6124995.png
+          href: https://dev.to/lissy93/cli-tools-you-cant-live-without-57f6
+    - Self Hosted Tools:
+        - icon: https://cdn-icons-png.flaticon.com/512/6124/6124995.png
+          href: https://github.com/awesome-selfhosted/awesome-selfhosted

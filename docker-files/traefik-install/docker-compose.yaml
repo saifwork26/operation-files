@@ -1,13 +1,10 @@
 services:
   traefik:
-    image: traefik:v3.0
+    image: traefik:v3.3
     container_name: traefik
     ports:
       - "80:80"
       - "443:443"
-    command:
-      - "--tracing=true"
-      - "--tracing.otlp=true"
     environment:
       - CF_API_EMAIL=${CF_API_EMAIL}
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
@@ -25,18 +22,18 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.cashalot.co.za`)" 
+      - "traefik.http.routers.traefik.rule=Host(`traefik.webport.co.za`)" 
       - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.cashalot.co.za`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.webport.co.za`)"
       - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].main=cashalot.co.za" 
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.cashalot.co.za" 
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=webport.co.za" 
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.webport.co.za" 
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
 networks:
