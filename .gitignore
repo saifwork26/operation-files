@@ -5,6 +5,7 @@
 
 # My Custom 
 password-manager/*
+.env
 
 ###########
 

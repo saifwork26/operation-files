@@ -1,0 +1,25 @@
+services:
+
+  mssql.database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-database
+    restart: always
+    env_file: .env
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${ROOT_PASSWORD}
+      - MSSQL_PID=Express
+      - MSSQL_MEMORY_LIMIT_MB=512mb
+    volumes:
+      - mssql_data:/var/opt/mssql 
+    networks:
+      - proxy
+      
+volumes:
+  mssql_data:
+
+networks:
+  proxy:
+    external: true

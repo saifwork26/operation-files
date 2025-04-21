@@ -1,2 +1,9 @@
+Reboot System
+sudo reboot
+
+sudo timedatectl set-timezone Africa/Johannesburg
+
+---------------------------------------------------------------------------
+
 wsl --install
 wsl --list --verbose
