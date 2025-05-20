@@ -1,0 +1,24 @@
+services:
+
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341  # Seq ingestion API
+      - 8081:8081  # Seq web UI
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.seq.loadbalancer.server.port=8081"
+      - "traefik.http.routers.seq.rule=Host(`seq.webport.co.za`)"
+      - "traefik.http.routers.seq.entrypoints=https"
+      - "traefik.http.routers.seq.tls=true"
+      - "traefik.http.routers.seq.tls.certresolver=cloudflare"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
